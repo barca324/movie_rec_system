@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Recommender</title>
+</head>
+<style>
+    body {
+        background-color: #121212;
+        color: #FFFFFF;
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        justify-content: center;
+        align-items: center;
+    }
+    h1 {
+        color: #FFD700;
+    }
+    form {
+        margin-bottom: 20px;
+    }
+    select, button {
+        padding: 10px;
+        font-size: 16px;
+        border: none;
+        background-color: #333333;
+        color: #FFFFFF;
+    }
+    select:hover, button:hover {
+        background-color: #555555;
+    }
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    li {
+        margin-bottom: 5px;
+    }
+    .hello{
+
+        display: flex;
+        flex-direction: row;
+        gap: 4;
+    }
+    .im{
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+    }
+    </style>
+<body>
+    <h1>Movie Recommender</h1>
+    <form action="/" method="post">
+        <label for="selected_value">Select a movie:</label>
+        <select name="selected_value" id="selected_value">
+            {% for option in options %}
+                <option value="{{ option }}">{{ option }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Submit</button>
+    </form>
+    
+        <h2>Recommended movies :</h2>
+        {% if image_detail %}
+          <div class="hello">
+            {% for movie, image in image_detail.items() %}
+                  <div class="im">
+                    <img src={{image}} height="400" />
+                    <p>{{ movie }}</p>
+                  </div> 
+                
+            {% endfor %}
+           </div> 
+        {% endif %}
+</body>
+</html>
+
